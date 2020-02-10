@@ -1,0 +1,14 @@
+FROM php:7.2-apache
+
+# En el ejemplo esta esta linea pero como esto ya lo hace el volumen lo dejo solo como comentario
+#COPY app/ /var/www/html/
+
+# Uso la configuración de produccion de php
+# RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# Uso la configuración de desarrollo de php
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+# Override with custom opcache settings
+#COPY config/opcache.ini $PHP_INI_DIR/conf.d/
+

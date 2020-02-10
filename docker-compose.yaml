@@ -1,0 +1,27 @@
+version: '2.0'
+
+services:
+
+  php:
+    build: ./docker/php
+    ports:
+      - 9000:80
+    volumes:
+      - ${PWD}/app:/var/www/html
+
+
+  mysql:
+    env_file:
+      - ./.env
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    #ports:
+    #  - 9001:3306
+    environment:
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_ROOT_PASSWORD: ${PASS}
+      MYSQL_USER: ${USER}
+      MYSQL_PASSWORD: ${PASS}
+    restart: always 
+    volumes:
+      - ${PWD}/docker/mysql:/var/lib/mysql
