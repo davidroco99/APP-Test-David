@@ -1,2 +1,2 @@
-#docker/mysql/*
-.env
+docker/mysql/*
+#.env

@@ -1,5 +1,8 @@
 FROM php:7.2-apache
 
+# Extencion para que se conecte php con mysql
+RUN docker-php-ext-install pdo pdo_mysql mysqli
+
 # En el ejemplo esta esta linea pero como esto ya lo hace el volumen lo dejo solo como comentario
 #COPY app/ /var/www/html/
 
@@ -11,4 +14,5 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Override with custom opcache settings
 #COPY config/opcache.ini $PHP_INI_DIR/conf.d/
+
 
